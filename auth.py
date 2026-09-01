@@ -1,7 +1,5 @@
 from passlib.context import CryptContext
-from jose import jwt, JWTError
-from fastapi import Depends
-from fastapi.security import OAuth2PasswordBearer
+from jose import jwt
 from datetime import datetime, timedelta
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -22,5 +20,3 @@ def napravi_token(korisnicko_ime):
     }
     token = jwt.encode(podaci, TAJNI_KLJUC, algorithm=ALGORITAM)
     return token
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
